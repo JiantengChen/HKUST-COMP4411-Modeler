@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{BE036B08-A463-45F9-81BC-CD83DD7FE47F}|modeler.vcxproj|C:\\Users\\22566\\Desktop\\Proj2\\sample.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{BE036B08-A463-45F9-81BC-CD83DD7FE47F}|modeler.vcxproj|solutionrelative:sample.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE036B08-A463-45F9-81BC-CD83DD7FE47F}|modeler.vcxproj|C:\\Users\\22566\\Desktop\\Proj2\\modelerview.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BE036B08-A463-45F9-81BC-CD83DD7FE47F}|modeler.vcxproj|solutionrelative:modelerview.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -24,9 +28,22 @@
               "RelativeDocumentMoniker": "sample.cpp",
               "ToolTip": "C:\\Users\\22566\\Desktop\\Proj2\\sample.cpp",
               "RelativeToolTip": "sample.cpp",
-              "ViewState": "AgIAAIMAAAAAAAAAAAAvwI0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFYBAAAAAAAAAAAnwGcBAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-10T12:13:22.016Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "modelerview.cpp",
+              "DocumentMoniker": "C:\\Users\\22566\\Desktop\\Proj2\\modelerview.cpp",
+              "RelativeDocumentMoniker": "modelerview.cpp",
+              "ToolTip": "C:\\Users\\22566\\Desktop\\Proj2\\modelerview.cpp",
+              "RelativeToolTip": "modelerview.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-11T14:09:47.554Z",
               "EditorCaption": ""
             }
           ]

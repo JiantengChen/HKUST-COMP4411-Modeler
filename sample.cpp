@@ -353,6 +353,22 @@ int main()
 
 	controls[LOD] = ModelerControl("Level of Detail", 1, 4, 1, 4);
 
+	controls[LIGHT0_X] = ModelerControl("Light0 X Position", -5, 5, 0.1f, 4);
+	controls[LIGHT0_Y] = ModelerControl("Light0 Y Position", -5, 5, 0.1f, 2);
+	controls[LIGHT0_Z] = ModelerControl("Light0 Z Position", -5, 5, 0.1f, -4);
+
+	controls[LIGHT1X] = ModelerControl("Light1 X Position", -5, 5, 0.1f, -2);
+	controls[LIGHT1Y] = ModelerControl("Light1 Y Position", -5, 5, 0.1f, 1);
+	controls[LIGHT1Z] = ModelerControl("Light1 Z Position", -5, 5, 0.1f, 5);
+
+	controls[LIGHT0_R] = ModelerControl("Light0 R Value", 0, 1, 0.01f, 1);
+	controls[LIGHT0_G] = ModelerControl("Light0 G Value", 0, 1, 0.01f, 1);
+	controls[LIGHT0_B] = ModelerControl("Light0 B Value", 0, 1, 0.01f, 1);
+
+	controls[LIGHT1R] = ModelerControl("Light1 R Value", 0, 1, 0.01f, 1);
+	controls[LIGHT1G] = ModelerControl("Light1 G Value", 0, 1, 0.01f, 1);
+	controls[LIGHT1B] = ModelerControl("Light1 B Value", 0, 1, 0.01f, 1);
+
 	controls[NECK_ANGLE] = ModelerControl("Neck Angle", -45, 45, 0.1f, 1);
 	controls[HEAD_ANGLE_X] = ModelerControl("Head Angle in X direction", -45, 45, 0.1f, 0);
 	controls[HEAD_ANGLE_Z] = ModelerControl("Head Angle in Z direction", 0, 45, 0.1f, 0);
