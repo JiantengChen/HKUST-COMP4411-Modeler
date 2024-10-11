@@ -40,7 +40,7 @@ void SampleModel::draw()
 
 	// start to draw the model.
 	setAmbientColor(.1f, .1f, .1f);
-	setDiffuseColor(COLOR_GREEN);
+	setDiffuseColor(0.4f, 0.4f, 0.4f);
 
 	glPushMatrix();
 	glTranslated(VAL(XPOS), VAL(YPOS), VAL(ZPOS));
@@ -58,45 +58,9 @@ void SampleModel::draw()
 	glRotated(-90, 0.0, 0.0, 1.0);
 	glScaled(1.5, 4.5, 2);
 
-	// top bottom
-	drawTriangle(
-		0, 1, 0,
-		1, 0, 0,
-		0, 0, 0);
-	drawTriangle(
-		0, 0, 1,
-		1, 0, 1,
-		0, 1, 1);
-
-	// x-z plane
-	drawTriangle(
-		0, 0, 0,
-		0, 0, 1,
-		1, 0, 1);
-	drawTriangle(
-		1, 0, 1,
-		1, 0, 0,
-		0, 0, 0);
-
-	// z-y plane
-	drawTriangle(
-		0, 0, 0,
-		0, 1, 0,
-		0, 1, 1);
-	drawTriangle(
-		0, 1, 1,
-		0, 0, 1,
-		0, 0, 0);
-
-	// final surface
-	drawTriangle(
-		0, 1, 0,
-		0, 1, 1,
-		1, 0, 1);
-	drawTriangle(
-		1, 0, 1,
-		1, 0, 0,
-		0, 1, 0);
+	glPushMatrix();
+	drawTextureBox(1, 1, 1);
+	glPopMatrix();
 
 	glPopMatrix();
 
@@ -111,7 +75,7 @@ void SampleModel::draw()
 	{
 
 		// neck
-		double angle0 = 45 + VAL(NECK_ANGLE);
+		double angle0 = 20 + VAL(NECK_ANGLE);
 
 		glPushMatrix();
 
@@ -119,7 +83,7 @@ void SampleModel::draw()
 		glRotated(angle0, 0.0, 0.0, 1.0);
 
 		glPushMatrix();
-		glScaled(1.5, 2.2, 2);
+		glScaled(1.5, 10.0, 2);
 		drawTextureBox(1, 1, 1);
 		glPopMatrix();
 
@@ -127,7 +91,7 @@ void SampleModel::draw()
 		if (VAL(LOD) > 2)
 		{
 
-			glTranslated(1.5, 2, 0);
+			glTranslated(1.5, 8, 0);
 			glRotated(90, 0, 0, 1);
 
 			// rotate
@@ -145,6 +109,20 @@ void SampleModel::draw()
 
 			glPushMatrix();
 			glScaled(0.75, 2, 2);
+			drawTextureBox(1, 1, 1);
+			glPopMatrix();
+
+			glPushMatrix();
+			glTranslated(0, 2, 0);
+			glRotated(-90, 0, 0, 1);
+			glScaled(0.4, 2.4, 0.4);
+			drawTextureBox(1, 1, 1);
+			glPopMatrix();
+
+			glPushMatrix();
+			glTranslated(0, 2, 1.6);
+			glRotated(-90, 0, 0, 1);
+			glScaled(0.4, 2.4, 0.4);
 			drawTextureBox(1, 1, 1);
 			glPopMatrix();
 		}
@@ -191,6 +169,7 @@ void SampleModel::draw()
 				glPushMatrix();
 				glRotated(-180, 0, 0, 1);
 				glScaled(1, 0.3, frontLegSize);
+				drawTextureBox(1, 1, 1);
 				glPopMatrix();
 			}
 		}
@@ -225,12 +204,12 @@ void SampleModel::draw()
 			drawTextureBox(1, 1, 1);
 			glPopMatrix();
 
-			glTranslated(0, -1.5 + 0.2, 0);
-			glRotated(VAL(LEFT_FRONT_ANGLE3), 0, 0, 1);
-			// animate(LEFT_FRONT_ANGLE3);
-
 			if (VAL(LOD) > 3)
 			{
+				glTranslated(0, -1.5 + 0.2, 0);
+				glRotated(VAL(LEFT_FRONT_ANGLE3), 0, 0, 1);
+				// animate(LEFT_FRONT_ANGLE3);
+
 				glPushMatrix();
 				glRotated(-180, 0, 0, 1);
 				glScaled(1, 0.3, frontLegSize);
@@ -251,7 +230,7 @@ void SampleModel::draw()
 
 		glPushMatrix();
 		glTranslated(backLegX, backLegY + aux, backLegZ);
-		// drawAxis();
+
 		//  rotate
 
 		float alpha1, alpha2;
@@ -277,7 +256,7 @@ void SampleModel::draw()
 		if (VAL(LOD) > 2)
 		{
 
-			glRotated(-30, 0, 0, 1);
+			// glRotated(-30, 0, 0, 1);
 			glPushMatrix();
 			glRotated(-180, 0, 0, 1);
 			glScaled(backLegSize, 3, backLegSize);
@@ -286,13 +265,12 @@ void SampleModel::draw()
 
 			glTranslated(0, -3 + 3 * aux, 0);
 
-			// rotate
-			glRotated(VAL(RIGHT_BACK_ANGLE3), 0, 0, 1);
-			// animate(RIGHT_BACK_ANGLE3);
-			glRotated(30, 0, 0, 1);
-
 			if (VAL(LOD) > 3)
 			{
+
+				// rotate
+				glRotated(VAL(RIGHT_BACK_ANGLE3), 0, 0, 1);
+				// animate(RIGHT_BACK_ANGLE3);
 
 				glPushMatrix();
 				glRotated(-180, 0, 0, 1);
@@ -324,7 +302,7 @@ void SampleModel::draw()
 
 		if (VAL(LOD) > 2)
 		{
-			glRotated(-30, 0, 0, 1);
+			// glRotated(-30, 0, 0, 1);
 			glPushMatrix();
 			glRotated(-180, 0, 0, 1);
 			glScaled(backLegSize, 3, backLegSize);
@@ -333,13 +311,12 @@ void SampleModel::draw()
 
 			glTranslated(0, -3 + 3 * aux, 0);
 
-			// rotate
-			glRotated(VAL(LEFT_BACK_ANGLE3), 0, 0, 1);
-			// animate(LEFT_BACK_ANGLE3);
-			glRotated(30, 0, 0, 1);
-
 			if (VAL(LOD) > 3)
 			{
+				// rotate
+				glRotated(VAL(LEFT_BACK_ANGLE3), 0, 0, 1);
+				// animate(LEFT_BACK_ANGLE3);
+
 				glPushMatrix();
 				glRotated(-180, 0, 0, 1);
 				glScaled(1, 0.3, backLegSize);
@@ -373,26 +350,24 @@ int main()
 	controls[XPOS] = ModelerControl("X Position", -5, 5, 0.1f, 0);
 	controls[YPOS] = ModelerControl("Y Position", 0, 5, 0.1f, 0);
 	controls[ZPOS] = ModelerControl("Z Position", -5, 5, 0.1f, 0);
-	controls[HEIGHT] = ModelerControl("Height", 1, 2.5, 0.1f, 1);
-	controls[ROTATE] = ModelerControl("Rotate", -135, 135, 1, 0);
 
 	controls[LOD] = ModelerControl("Level of Detail", 1, 4, 1, 4);
 
 	controls[NECK_ANGLE] = ModelerControl("Neck Angle", -45, 45, 0.1f, 1);
 	controls[HEAD_ANGLE_X] = ModelerControl("Head Angle in X direction", -45, 45, 0.1f, 0);
 	controls[HEAD_ANGLE_Z] = ModelerControl("Head Angle in Z direction", 0, 45, 0.1f, 0);
-	controls[LEFT_FRONT_ANGLE1] = ModelerControl("Left front upper  arm angle", -45, 45, 0.1f, 0);
+	controls[LEFT_FRONT_ANGLE1] = ModelerControl("Left front upper arm angle", -45, 45, 0.1f, 0);
 	controls[LEFT_FRONT_ANGLE2] = ModelerControl("Left front middle arm angle", -45, 45, 0.1f, 0);
-	controls[LEFT_FRONT_ANGLE3] = ModelerControl("Left front lower  arm angle", -45, 45, 0.1f, 0);
-	controls[RIGHT_FRONT_ANGLE1] = ModelerControl("Right front upper  arm angle", -45, 45, 0.1f, 0);
+	controls[LEFT_FRONT_ANGLE3] = ModelerControl("Left front lower arm angle", -45, 45, 0.1f, 0);
+	controls[RIGHT_FRONT_ANGLE1] = ModelerControl("Right front upper arm angle", -45, 45, 0.1f, 0);
 	controls[RIGHT_FRONT_ANGLE2] = ModelerControl("Right front middle arm angle", -45, 45, 0.1f, 0);
-	controls[RIGHT_FRONT_ANGLE3] = ModelerControl("Right front lower  arm angle", -45, 45, 0.1f, 0);
-	controls[LEFT_BACK_ANGLE1] = ModelerControl("Left back upper  leg angle", -45, 45, 0.1f, 0);
+	controls[RIGHT_FRONT_ANGLE3] = ModelerControl("Right front lower arm angle", -45, 45, 0.1f, 0);
+	controls[LEFT_BACK_ANGLE1] = ModelerControl("Left back upper leg angle", -45, 45, 0.1f, 0);
 	controls[LEFT_BACK_ANGLE2] = ModelerControl("Left back middle leg angle", -45, 45, 0.1f, 0);
-	controls[LEFT_BACK_ANGLE3] = ModelerControl("Left back lower  leg angle", -45, 45, 0.1f, 0);
-	controls[RIGHT_BACK_ANGLE1] = ModelerControl("Right back upper  leg angle", -45, 45, 0.1f, 0);
+	controls[LEFT_BACK_ANGLE3] = ModelerControl("Left back lower leg angle", -45, 45, 0.1f, 0);
+	controls[RIGHT_BACK_ANGLE1] = ModelerControl("Right back upper leg angle", -45, 45, 0.1f, 0);
 	controls[RIGHT_BACK_ANGLE2] = ModelerControl("Right back middle leg angle", -45, 45, 0.1f, 0);
-	controls[RIGHT_BACK_ANGLE3] = ModelerControl("Right back lower  leg angle", -45, 45, 0.1f, 0);
+	controls[RIGHT_BACK_ANGLE3] = ModelerControl("Right back lower leg angle", -45, 45, 0.1f, 0);
 
 	controls[TAIL_ANGLE_X] = ModelerControl("Tail Angle X", -45, 45, 0.1f, 0);
 	controls[TAIL_ANGLE_Y] = ModelerControl("Tail Angle Y", -45, 45, 0.1f, 0);

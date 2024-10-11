@@ -13,8 +13,6 @@ enum SampleModelControls
 	XPOS,
 	YPOS,
 	ZPOS,
-	HEIGHT,
-	ROTATE,
 	LOD,
 	NECK_ANGLE,
 	HEAD_ANGLE_X,
