@@ -19,7 +19,7 @@ public:
 	SampleModel(int x, int y, int w, int h, char *label)
 		: ModelerView(x, y, w, h, label) {}
 
-	void frameAll();
+	void frameAll(float dx, float dy, float dz);
 
 	virtual void draw();
 };
@@ -39,7 +39,7 @@ void SampleModel::draw()
 	// FRAME_ALL is a flag that change the position of the camera such that your model is entirely visible in the model window
 	if (VAL(FRAME_ALL))
 	{
-		SampleModel::frameAll();
+		SampleModel::frameAll(VAL(XPOS), VAL(YPOS), VAL(ZPOS));
 	}
 
 	// This call takes care of a lot of the nasty projection
@@ -147,7 +147,6 @@ void SampleModel::draw()
 
 		// rotate
 		glRotated(VAL(RIGHT_FRONT_ANGLE1), 0, 0, 1);
-		// animate(RIGHT_FRONT_ANGLE1);
 
 		glPushMatrix();
 		glRotated(-180, 0, 0, 1);
@@ -160,7 +159,6 @@ void SampleModel::draw()
 
 			glTranslated(0, -2 - 0.5 + 0.2, 0);
 			glRotated(VAL(RIGHT_FRONT_ANGLE2), 0, 0, 1);
-			// animate(RIGHT_FRONT_ANGLE2);
 
 			glPushMatrix();
 			glRotated(-180, 0, 0, 1);
@@ -174,7 +172,6 @@ void SampleModel::draw()
 
 				glTranslated(0, -1.5 + 0.2, 0);
 				glRotated(VAL(RIGHT_FRONT_ANGLE3), 0, 0, 1);
-				// animate(RIGHT_FRONT_ANGLE3);
 
 				glPushMatrix();
 				glRotated(-180, 0, 0, 1);
@@ -194,7 +191,6 @@ void SampleModel::draw()
 
 		// rotate
 		glRotated(VAL(LEFT_FRONT_ANGLE1), 0, 0, 1);
-		// animate(LEFT_FRONT_ANGLE1);
 
 		glPushMatrix();
 		glRotated(-180, 0, 0, 1);
@@ -204,7 +200,6 @@ void SampleModel::draw()
 
 		glTranslated(0, -2 - 0.5 + 0.2, 0);
 		glRotated(VAL(LEFT_FRONT_ANGLE2), 0, 0, 1);
-		// animate(LEFT_FRONT_ANGLE2);
 
 		if (VAL(LOD) > 2)
 		{
@@ -218,7 +213,6 @@ void SampleModel::draw()
 			{
 				glTranslated(0, -1.5 + 0.2, 0);
 				glRotated(VAL(LEFT_FRONT_ANGLE3), 0, 0, 1);
-				// animate(LEFT_FRONT_ANGLE3);
 
 				glPushMatrix();
 				glRotated(-180, 0, 0, 1);
@@ -229,7 +223,7 @@ void SampleModel::draw()
 		}
 		glPopMatrix();
 
-		// part5, 9, 12 back right leg
+		// back right leg
 
 		double backLegSize = 0.6;
 		double backLegX = 4.5;
@@ -242,14 +236,10 @@ void SampleModel::draw()
 		glTranslated(backLegX, backLegY + aux, backLegZ);
 
 		//  rotate
-
 		float alpha1, alpha2;
 		const float l1 = 2.3, l2 = 3.0;
-
 		glRotated(VAL(RIGHT_BACK_THETA), 1, 0, 0);
 		glRotated(VAL(RIGHT_BACK_ANGLE1), 0, 0, 1);
-
-		// animate(RIGHT_BACK_ANGLE1);
 
 		glPushMatrix();
 		glRotated(-180, 0, 0, 1);
@@ -261,12 +251,8 @@ void SampleModel::draw()
 
 		glRotated(VAL(RIGHT_BACK_ANGLE2), 0, 0, 1);
 
-		// animate(RIGHT_BACK_ANGLE2);
-
 		if (VAL(LOD) > 2)
 		{
-
-			// glRotated(-30, 0, 0, 1);
 			glPushMatrix();
 			glRotated(-180, 0, 0, 1);
 			glScaled(backLegSize, 3, backLegSize);
@@ -280,7 +266,6 @@ void SampleModel::draw()
 
 				// rotate
 				glRotated(VAL(RIGHT_BACK_ANGLE3), 0, 0, 1);
-				// animate(RIGHT_BACK_ANGLE3);
 
 				glPushMatrix();
 				glRotated(-180, 0, 0, 1);
@@ -297,7 +282,6 @@ void SampleModel::draw()
 		glTranslated(backLegX, backLegY + aux, backLegZ);
 		// rotate
 		glRotated(VAL(LEFT_BACK_ANGLE1), 0, 0, 1);
-		// animate(LEFT_BACK_ANGLE1);
 
 		glPushMatrix();
 		glRotated(-180, 0, 0, 1);
@@ -308,11 +292,9 @@ void SampleModel::draw()
 		glTranslated(0, -2.5 + aux, 0);
 		// rotate
 		glRotated(VAL(LEFT_BACK_ANGLE2), 0, 0, 1);
-		// animate(LEFT_BACK_ANGLE2);
 
 		if (VAL(LOD) > 2)
 		{
-			// glRotated(-30, 0, 0, 1);
 			glPushMatrix();
 			glRotated(-180, 0, 0, 1);
 			glScaled(backLegSize, 3, backLegSize);
@@ -350,9 +332,9 @@ void SampleModel::draw()
 	glPopMatrix();
 }
 
-void SampleModel::frameAll()
+void SampleModel::frameAll(float dx, float dy, float dz)
 {
-	m_camera->frameAll();
+	m_camera->frameAll(dx, dy, dz);
 	SET(FRAME_ALL, 0);
 }
 
@@ -367,7 +349,6 @@ int main()
 	controls[ZPOS] = ModelerControl("Z Position", -5, 5, 0.1f, 0);
 
 	controls[FRAME_ALL] = ModelerControl("Frame All", 0, 1, 1, 0);
-
 	controls[LOD] = ModelerControl("Level of Detail", 1, 4, 1, 4);
 
 	controls[LIGHT0_X] = ModelerControl("Light0 X Position", -5, 5, 0.1f, 2);

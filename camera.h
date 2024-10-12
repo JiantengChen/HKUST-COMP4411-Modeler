@@ -98,17 +98,39 @@ public:
         return mLookAt;
     }
 
-    inline void frameAll()
+    inline void frameAll(const float dx, const float dy, const float dz)
     {
-        mPosition = Vec3f(0.0f, -2.1f, -5.0f);
-        mLookAt = Vec3f(2.0f, 1.0f, -1.0f);
+        // mPosition = Vec3f(2.0f + dx, 10.0f + dy, 20.0f + dz);
+        // mLookAt = Vec3f(1.400000f + dx, -2.700000f + dy, -5.000000f + dz);
+        // mUpVector = Vec3f(0.0f, 1.0f, 0.0f);
+        // mAzimuth = 3.086036f;
+        // mElevation = 6.316516f;
+        // mDolly = -20.000000f;
+        // mTwist = 0.000000f;
+        // mDirtyTransform = false;
+
+        // 		mElevation	6.24985266	float
+        // 		mAzimuth	2.98603535	float
+        // 		mDolly	-24.4799957	float
+        // 		mTwist	0.00000000	float
+        // +		mLookAt	{n=0x007cf510 {2.09999895, 0.529236019, -0.107281998} }	Vec3<float>
+        // +		mPosition	{n=0x007cf51c {-1.69059706, -0.286596000, 24.0636921} }	Vec3<float>
+        // +		mUpVector	{n=0x007cf528 {0.00000000, 1.00000000, 0.00000000} }	Vec3<float>
+
+        mPosition = Vec3f(-1.69059706f + dx, -0.286596000f + dy, 24.0636921f + dz);
+        mLookAt = Vec3f(2.09999895f + dx, 0.529236019f + dy, -0.107281998f + dz);
         mUpVector = Vec3f(0.0f, 1.0f, 0.0f);
-        mAzimuth = 3.130481f;
-        mElevation = 6.149852f;
-        mDolly = -20.000000f;
-        mTwist = 0.000000f;
+        mAzimuth = 2.98603535f;
+        mElevation = 6.24985266f;
+        mDolly = -24.4799957f;
+        mTwist = 0.00000000f;
         mDirtyTransform = false;
-        lookAt(mPosition, mLookAt, mUpVector);
+
+        double _position[3] = {mPosition[0], mPosition[1], mPosition[2]};
+        double _lookAt[3] = {mLookAt[0], mLookAt[1], mLookAt[2]};
+        double _up[3] = {mUpVector[0], mUpVector[1], mUpVector[2]};
+
+        lookAt(_position, _lookAt, _up);
     }
 
     //---[ Interactive Adjustment ]------------------------
@@ -124,7 +146,7 @@ public:
     void applyViewingTransform();
 
     // gluLookAt equivalent
-    void lookAt(Vec3f eye, Vec3f at, Vec3f up);
+    void Camera::lookAt(double *eye, double *at, double *up);
 };
 
 #endif

@@ -94,6 +94,12 @@ void Camera::calculateViewingTransformParameters()
 	// grouped for (mat4 * vec3) ops instead of (mat4 * mat4) ops
 	mPosition = originXform * (azimXform * (elevXform * (dollyXform * mPosition)));
 
+	// debug
+	printf("mpostion:%f %f %f\n", mPosition[0], mPosition[1], mPosition[2]);
+	printf("mlookat:%f %f %f\n", mLookAt[0], mLookAt[1], mLookAt[2]);
+	printf("mup:%f %f %f\n", mUpVector[0], mUpVector[1], mUpVector[2]);
+	printf("%f %f %f %f\n\n", mAzimuth, mElevation, mDolly, mTwist);
+
 	if (fmod((double)mElevation, 2.0 * M_PI) < 3 * M_PI / 2 && fmod((double)mElevation, 2.0 * M_PI) > M_PI / 2)
 		mUpVector = Vec3f(0, -1, 0);
 	else
@@ -193,21 +199,25 @@ Vec3f cross(const Vec3f &a, const Vec3f &b)
 		a[0] * b[1] - a[1] * b[0]);
 }
 
-void Camera::lookAt(Vec3f eye, Vec3f at, Vec3f up)
+void Camera::lookAt(double *eye, double *at, double *up)
 {
-	Vec3f view_dir = at - eye;
+	Vec3f eyeVec(eye[0], eye[1], eye[2]);
+	Vec3f atVec(at[0], at[1], at[2]);
+	Vec3f upVec(up[0], up[1], up[2]);
+
+	Vec3f view_dir = atVec - eyeVec;
 	view_dir.normalize();
 
-	up.normalize();
+	upVec.normalize();
 
-	Vec3f right = cross(view_dir, up);
+	Vec3f right = cross(view_dir, upVec);
 	right.normalize();
 
-	up = cross(right, view_dir);
+	upVec = cross(right, view_dir);
 
 	Mat4f viewMatrix = {
 		right[0], right[1], right[2], 0,
-		up[0], up[1], up[2], 0,
+		upVec[0], upVec[1], upVec[2], 0,
 		-view_dir[0], -view_dir[1], -view_dir[2], 0,
 		0, 0, 0, 1};
 
@@ -215,6 +225,6 @@ void Camera::lookAt(Vec3f eye, Vec3f at, Vec3f up)
 	viewMatrix.getGLMatrix(view_matrix);
 
 	glMultMatrixf(view_matrix);
-	glTranslated(-eye[0], -eye[1], -eye[2]);
+	glTranslated(-eyeVec[0], -eyeVec[1], -eyeVec[2]);
 }
 #pragma warning(pop)
