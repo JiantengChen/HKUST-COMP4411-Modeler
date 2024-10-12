@@ -19,6 +19,8 @@ public:
 	SampleModel(int x, int y, int w, int h, char *label)
 		: ModelerView(x, y, w, h, label) {}
 
+	void frameAll();
+
 	virtual void draw();
 };
 
@@ -33,6 +35,13 @@ ModelerView *createSampleModel(int x, int y, int w, int h, char *label)
 // method of ModelerView to draw out SampleModel
 void SampleModel::draw()
 {
+
+	// FRAME_ALL is a flag that change the position of the camera such that your model is entirely visible in the model window
+	if (VAL(FRAME_ALL))
+	{
+		SampleModel::frameAll();
+	}
+
 	// This call takes care of a lot of the nasty projection
 	// matrix stuff.  Unless you want to fudge directly with the
 	// projection matrix, don't bother with this ...
@@ -341,6 +350,12 @@ void SampleModel::draw()
 	glPopMatrix();
 }
 
+void SampleModel::frameAll()
+{
+	m_camera->frameAll();
+	SET(FRAME_ALL, 0);
+}
+
 int main()
 {
 	// Initialize the controls
@@ -348,8 +363,10 @@ int main()
 	// stepsize, defaultvalue)
 	ModelerControl controls[NUMCONTROLS];
 	controls[XPOS] = ModelerControl("X Position", -5, 5, 0.1f, 0);
-	controls[YPOS] = ModelerControl("Y Position", 0, 5, 0.1f, 0);
+	controls[YPOS] = ModelerControl("Y Position", -5, 5, 0.1f, 0);
 	controls[ZPOS] = ModelerControl("Z Position", -5, 5, 0.1f, 0);
+
+	controls[FRAME_ALL] = ModelerControl("Frame All", 0, 1, 1, 0);
 
 	controls[LOD] = ModelerControl("Level of Detail", 1, 4, 1, 4);
 

@@ -14,6 +14,7 @@ enum SampleModelControls
 	YPOS,
 	ZPOS,
 
+	FRAME_ALL,
 	LOD,
 
 	LIGHT0_X,
@@ -66,5 +67,6 @@ enum SampleModelControls
 // We'll be getting the instance of the application a lot;
 // might as well have it as a macro.
 #define VAL(x) (ModelerApplication::Instance()->GetControlValue(x))
+#define SET(x, y) (ModelerApplication::Instance()->SetControlValue(x, y))
 
 #endif
