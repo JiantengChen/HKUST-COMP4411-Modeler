@@ -19,7 +19,7 @@ public:
 	SampleModel(int x, int y, int w, int h, char *label)
 		: ModelerView(x, y, w, h, label) {}
 
-	void frameAll(float dx, float dy, float dz);
+	void frameAll();
 
 	virtual void draw();
 };
@@ -39,7 +39,7 @@ void SampleModel::draw()
 	// FRAME_ALL is a flag that change the position of the camera such that your model is entirely visible in the model window
 	if (VAL(FRAME_ALL))
 	{
-		SampleModel::frameAll(VAL(XPOS), VAL(YPOS), VAL(ZPOS));
+		SampleModel::frameAll();
 	}
 
 	// This call takes care of a lot of the nasty projection
@@ -332,9 +332,9 @@ void SampleModel::draw()
 	glPopMatrix();
 }
 
-void SampleModel::frameAll(float dx, float dy, float dz)
+void SampleModel::frameAll()
 {
-	m_camera->frameAll(dx, dy, dz);
+	m_camera->frameAll();
 	SET(FRAME_ALL, 0);
 }
 
