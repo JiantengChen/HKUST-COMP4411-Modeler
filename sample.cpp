@@ -58,7 +58,7 @@ void SampleModel::draw()
 	glPushMatrix();
 	glTranslated(-2, 0, -1);
 	glScaled(2, 3, 2);
-	drawTextureBox(1, 1, 1);
+	drawBox(1, 1, 1);
 	glPopMatrix();
 
 	// part 2
@@ -68,7 +68,7 @@ void SampleModel::draw()
 	glScaled(1.5, 4.5, 2);
 
 	glPushMatrix();
-	drawTextureBox(1, 1, 1);
+	drawBox(1, 1, 1);
 	glPopMatrix();
 
 	glPopMatrix();
@@ -76,7 +76,7 @@ void SampleModel::draw()
 	glPushMatrix();
 	glTranslated(0, 1.5, -1);
 	glScaled(4.5, 1.5, 2);
-	drawTextureBox(1, 1, 1);
+	drawBox(1, 1, 1);
 	glPopMatrix();
 
 	// LODS
@@ -93,7 +93,7 @@ void SampleModel::draw()
 
 		glPushMatrix();
 		glScaled(1.5, 10.0, 2);
-		drawTextureBox(1, 1, 1);
+		drawBox(1, 1, 1);
 		glPopMatrix();
 
 		// head
@@ -111,28 +111,28 @@ void SampleModel::draw()
 
 			glPushMatrix();
 			glScaled(0.75, 3, 2);
-			drawTextureBox(1, 1, 1);
+			drawBox(1, 1, 1);
 			glPopMatrix();
 
 			glTranslated(0.75, 0, 0);
 
 			glPushMatrix();
 			glScaled(0.75, 2, 2);
-			drawTextureBox(1, 1, 1);
+			drawBox(1, 1, 1);
 			glPopMatrix();
 
 			glPushMatrix();
 			glTranslated(0, 2, 0);
 			glRotated(-90, 0, 0, 1);
 			glScaled(0.4, 2.4, 0.4);
-			drawTextureBox(1, 1, 1);
+			drawBox(1, 1, 1);
 			glPopMatrix();
 
 			glPushMatrix();
 			glTranslated(0, 2, 1.6);
 			glRotated(-90, 0, 0, 1);
 			glScaled(0.4, 2.4, 0.4);
-			drawTextureBox(1, 1, 1);
+			drawBox(1, 1, 1);
 			glPopMatrix();
 		}
 		glPopMatrix();
@@ -152,7 +152,7 @@ void SampleModel::draw()
 		glPushMatrix();
 		glRotated(-180, 0, 0, 1);
 		glScaled(frontLegSize, 2 + 0.5, frontLegSize);
-		drawTextureBox(1, 1, 1);
+		drawBox(1, 1, 1);
 		glPopMatrix();
 
 		if (VAL(LOD) > 2)
@@ -165,7 +165,8 @@ void SampleModel::draw()
 			glPushMatrix();
 			glRotated(-180, 0, 0, 1);
 			glScaled(frontLegSize, 1.5, frontLegSize);
-			drawTextureBox(1, 1, 1);
+			drawBox(1, 1, 1);
+			drawBox(1, 1, 1);
 			glPopMatrix();
 
 			if (VAL(LOD) > 3)
@@ -178,7 +179,7 @@ void SampleModel::draw()
 				glPushMatrix();
 				glRotated(-180, 0, 0, 1);
 				glScaled(1, 0.3, frontLegSize);
-				drawTextureBox(1, 1, 1);
+				drawBox(1, 1, 1);
 				glPopMatrix();
 			}
 		}
@@ -198,7 +199,7 @@ void SampleModel::draw()
 		glPushMatrix();
 		glRotated(-180, 0, 0, 1);
 		glScaled(frontLegSize, 2 + 0.5, frontLegSize);
-		drawTextureBox(1, 1, 1);
+		drawBox(1, 1, 1);
 		glPopMatrix();
 
 		glTranslated(0, -2 - 0.5 + 0.2, 0);
@@ -210,7 +211,7 @@ void SampleModel::draw()
 			glPushMatrix();
 			glRotated(-180, 0, 0, 1);
 			glScaled(frontLegSize, 1.5, frontLegSize);
-			drawTextureBox(1, 1, 1);
+			drawBox(1, 1, 1);
 			glPopMatrix();
 
 			if (VAL(LOD) > 3)
@@ -222,7 +223,7 @@ void SampleModel::draw()
 				glPushMatrix();
 				glRotated(-180, 0, 0, 1);
 				glScaled(1, 0.3, frontLegSize);
-				drawTextureBox(1, 1, 1);
+				drawBox(1, 1, 1);
 				glPopMatrix();
 			}
 		}
@@ -253,7 +254,7 @@ void SampleModel::draw()
 		glPushMatrix();
 		glRotated(-180, 0, 0, 1);
 		glScaled(backLegSize, 2.5 + aux, backLegSize);
-		drawTextureBox(1, 1, 1);
+		drawBox(1, 1, 1);
 		glPopMatrix();
 
 		glTranslated(0, -2.5 + aux, 0);
@@ -269,7 +270,7 @@ void SampleModel::draw()
 			glPushMatrix();
 			glRotated(-180, 0, 0, 1);
 			glScaled(backLegSize, 3, backLegSize);
-			drawTextureBox(1, 1, 1);
+			drawBox(1, 1, 1);
 			glPopMatrix();
 
 			glTranslated(0, -3 + 3 * aux, 0);
@@ -284,7 +285,7 @@ void SampleModel::draw()
 				glPushMatrix();
 				glRotated(-180, 0, 0, 1);
 				glScaled(1, 0.3, backLegSize);
-				drawTextureBox(1, 1, 1);
+				drawBox(1, 1, 1);
 				glPopMatrix();
 			}
 		}
@@ -301,7 +302,7 @@ void SampleModel::draw()
 		glPushMatrix();
 		glRotated(-180, 0, 0, 1);
 		glScaled(backLegSize, 2.5 + aux, backLegSize);
-		drawTextureBox(1, 1, 1);
+		drawBox(1, 1, 1);
 		glPopMatrix();
 
 		glTranslated(0, -2.5 + aux, 0);
@@ -315,7 +316,7 @@ void SampleModel::draw()
 			glPushMatrix();
 			glRotated(-180, 0, 0, 1);
 			glScaled(backLegSize, 3, backLegSize);
-			drawTextureBox(1, 1, 1);
+			drawBox(1, 1, 1);
 			glPopMatrix();
 
 			glTranslated(0, -3 + 3 * aux, 0);
@@ -324,12 +325,11 @@ void SampleModel::draw()
 			{
 				// rotate
 				glRotated(VAL(LEFT_BACK_ANGLE3), 0, 0, 1);
-				// animate(LEFT_BACK_ANGLE3);
 
 				glPushMatrix();
 				glRotated(-180, 0, 0, 1);
 				glScaled(1, 0.3, backLegSize);
-				drawTextureBox(1, 1, 1);
+				drawBox(1, 1, 1);
 				glPopMatrix();
 			}
 		}
@@ -343,7 +343,7 @@ void SampleModel::draw()
 
 		glRotated(-150 + VAL(TAIL_ANGLE_Z), 0, 0, 1);
 		glScaled(0.2, 2.5, 0.2);
-		drawTextureBox(1, 1, 1);
+		drawBox(1, 1, 1);
 		glPopMatrix();
 	}
 
@@ -370,20 +370,20 @@ int main()
 
 	controls[LOD] = ModelerControl("Level of Detail", 1, 4, 1, 4);
 
-	controls[LIGHT0_X] = ModelerControl("Light0 X Position", -5, 5, 0.1f, 4);
-	controls[LIGHT0_Y] = ModelerControl("Light0 Y Position", -5, 5, 0.1f, 2);
-	controls[LIGHT0_Z] = ModelerControl("Light0 Z Position", -5, 5, 0.1f, -4);
+	controls[LIGHT0_X] = ModelerControl("Light0 X Position", -5, 5, 0.1f, 2);
+	controls[LIGHT0_Y] = ModelerControl("Light0 Y Position", -5, 5, 0.1f, 3);
+	controls[LIGHT0_Z] = ModelerControl("Light0 Z Position", -5, 5, 0.1f, 4);
 
-	controls[LIGHT1X] = ModelerControl("Light1 X Position", -5, 5, 0.1f, -2);
-	controls[LIGHT1Y] = ModelerControl("Light1 Y Position", -5, 5, 0.1f, 1);
-	controls[LIGHT1Z] = ModelerControl("Light1 Z Position", -5, 5, 0.1f, 5);
+	controls[LIGHT1X] = ModelerControl("Light1 X Position", -5, 5, 0.1f, -3);
+	controls[LIGHT1Y] = ModelerControl("Light1 Y Position", -5, 5, 0.1f, -3);
+	controls[LIGHT1Z] = ModelerControl("Light1 Z Position", -5, 5, 0.1f, -3);
 
-	controls[LIGHT0_R] = ModelerControl("Light0 R Value", 0, 1, 0.01f, 1);
-	controls[LIGHT0_G] = ModelerControl("Light0 G Value", 0, 1, 0.01f, 1);
-	controls[LIGHT0_B] = ModelerControl("Light0 B Value", 0, 1, 0.01f, 1);
+	controls[LIGHT0_R] = ModelerControl("Light0 R Value", 0, 1, 0.01f, 0.3);
+	controls[LIGHT0_G] = ModelerControl("Light0 G Value", 0, 1, 0.01f, 0.5);
+	controls[LIGHT0_B] = ModelerControl("Light0 B Value", 0, 1, 0.01f, 0.7);
 
-	controls[LIGHT1R] = ModelerControl("Light1 R Value", 0, 1, 0.01f, 1);
-	controls[LIGHT1G] = ModelerControl("Light1 G Value", 0, 1, 0.01f, 1);
+	controls[LIGHT1R] = ModelerControl("Light1 R Value", 0, 1, 0.01f, 0.2);
+	controls[LIGHT1G] = ModelerControl("Light1 G Value", 0, 1, 0.01f, 0.7);
 	controls[LIGHT1B] = ModelerControl("Light1 B Value", 0, 1, 0.01f, 1);
 
 	controls[NECK_ANGLE] = ModelerControl("Neck Angle", -45, 45, 0.1f, 1);
